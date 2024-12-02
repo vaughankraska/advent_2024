@@ -1,0 +1,49 @@
+use anyhow::*;
+use code_timing_macros::time_snippet;
+use const_format::concatcp;
+use std::io::{BufRead, BufReader};
+use std::fs::File;
+use advent_2024::start_day;
+
+const DAY: &str = todo!();
+const INPUT_1: &str = concatcp!("inputs/", DAY, "p1.txt");
+
+#[allow(unused)]
+const INPUT_2: &str = concatcp!("inputs/", DAY, "p2.txt");
+
+const TEST_1: &str = r#"TODO"#;
+
+#[allow(unused)]
+const TEST_2: &str = r#"TODO"#;
+
+
+pub fn part_one<R: BufRead>(reader: R) -> Result<usize> {
+    let answer = reader.lines().flatten().count();
+
+
+    Ok(answer)
+}
+
+pub fn main() -> Result<()> {
+    start_day(DAY);
+
+    println!("--- pt 1. ---");
+    let p1 = part_one(BufReader::new(TEST_1.as_bytes()));
+
+    assert_eq!(todo!(), p1?);
+
+    let input_file = BufReader::new(File::open(INPUT_1).unwrap());
+    let result = time_snippet!(part_one(input_file));
+    println!("Result = {}", result?);
+
+    // println!("--- pt 2. ---");
+    // let p2 = part_two(BufReader::new(TEST_2.as_bytes()));
+
+    // assert_eq!(todo!(), p2?);
+
+    // let input_file = BufReader::new(File::open(INPUT_2).unwrap());
+    // let result = time_snippet!(part_two(input_file));
+    // println!("Pt. 2 Result = {}", result?);
+
+    Ok(())
+}
