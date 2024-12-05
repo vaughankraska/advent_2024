@@ -80,11 +80,11 @@ pub fn do_parse(input: &str) -> IResult<&str, Vec<Instruction>> {
 pub fn part_two<R: BufRead>(reader: R) -> Result<i32, anyhow::Error> {
     let mut answer: i32 = 0;
     for line in reader.lines() {
-        let mut line = line.unwrap();
+        let line = line.unwrap();
         let (remaining, ins) = do_parse(&line).unwrap();
         dbg!(&remaining);
         answer += ins.iter().map(|&i| i.x * i.y ).sum::<i32>();
-        line = remaining.to_string();
+        _ = remaining.to_string();
     }
 
 
